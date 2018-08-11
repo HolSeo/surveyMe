@@ -13,5 +13,5 @@ You do NOT have to enter in your actual credit card information! Enter in 4242-4
 - Stripe (Credit-card payment)
 - Sendgrid (Email provider)
 - MongoDB with Mongoose 
-- MaterialCSS
+- MaterializeCSS
 - HTML/CSS
