@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines" : {
+    "node": "10.1.0",
+    "npm": "5.6.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HolSeo/surveyMe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HolSeo/surveyMe/issues"
+  },
+  "homepage": "https://github.com/HolSeo/surveyMe#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
