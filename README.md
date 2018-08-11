@@ -9,8 +9,9 @@ You do NOT have to enter in your actual credit card information! Enter in 4242-4
 ### Tech Stack
 - React.js with Redux.
 - Express and Node.js
-- Passport.js
-- Sendgrid
-- MongoDB with Mongoose
+- Passport.js (Google Authentication)
+- Stripe (Credit-card payment)
+- Sendgrid (Email provider)
+- MongoDB with Mongoose 
 - MaterialCSS
 - HTML/CSS
