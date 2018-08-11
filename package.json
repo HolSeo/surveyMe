@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/HolSeo/surveyMe#readme",
   "dependencies": {
+    "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.3",
     "mongoose": "^5.2.7",
     "nodemon": "^1.18.3",
