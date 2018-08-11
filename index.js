@@ -1,13 +1,14 @@
 const express = require('express');
-const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const mongoose = require('mongoose');
+const keys = require('./config/keys')
 
 require('./services/passport')
 
-const app = express();
+mongoose.connect(keys.mongoURI, {
+    useNewUrlParser:true
+})
 
-app.use(passport.initialize())
-app.use(passport.session())
+const app = express();
 
 require('./routes/authRoutes')(app)
 
