@@ -5,10 +5,14 @@ const keys = require('../config/keys')
 
 const User = mongoose.model('users')
 
+// takes token and puts inside cookie and sends to browser.
+// Browser takes cookie and attaches to req and sends to server.
 passport.serializeUser((user, done) => {
     done(null,user.id);
 })
 
+// Server takes the cookie and turns it back to use model.
+// User model instance is added to req object as req.user;
 passport.deserializeUser( async (id,done) => {
     const user = await User.findById(id)
     done(null,user)
