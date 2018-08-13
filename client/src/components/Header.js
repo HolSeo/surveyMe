@@ -12,7 +12,7 @@ class Header extends Component {
             default:
                 return [
                     <li key="1"><a href="/">Payment</a></li>,
-                    <li key="3"><a href="/">Logout</a></li>
+                    <li key="3"><a href="/api/logout">Logout</a></li>
                 ]
         }
     }

@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 class Landing extends Component {
     render() {
         return (
-            <div>
-                THIS IS LANDING PAGE!
+            <div style={{ textAlign: 'center' }}>
+                <h1>THIS IS THE LANDING PAGE!!</h1>
             </div>
         )
     }
