@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const keys = require('./config/keys')
 const cookieSession = require('cookie-session')
+const bodyParser = require('body-parser')
 const passport = require('passport')
 
 require('./models/User')
@@ -12,6 +13,8 @@ mongoose.connect(keys.mongoURI, {
 })
 
 const app = express();
+
+app.use(bodyParser.json())
 
 // These three middlewares will run when request is made,
 // cookie session extracts cookie data, assigns to req.session, then passport middlewares
@@ -30,6 +33,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 require('./routes/authRoutes')(app)
+require('./routes/billingRoutes')(app)
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT)
