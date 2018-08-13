@@ -1,12 +1,18 @@
 import React from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import Landing from './Landing'
 import Header from './Header'
 import Dashboard from './Dashboard'
 import SurveyNew from './surveys/SurveyNew'
 
+import * as actions from '../actions'
+
 class App extends React.Component {
+    componentDidMount() {
+        this.props.fetchUser()
+    }
     render() {
         return (
             <BrowserRouter>
@@ -21,4 +27,4 @@ class App extends React.Component {
     }
 }
 
-export default App
+export default connect(null, actions)(App)
