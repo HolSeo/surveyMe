@@ -9,11 +9,11 @@ class Header extends Component {
             case null:
                 return;
             case false:
-                return <li key="1"><a href="/auth/google">Login with Gooogle</a></li>
+                return <li><a href="/auth/google">Login with Gooogle</a></li>
             default:
                 return [
                     <li key="1"><Payments /></li>,
-                    <li key="2" style={{ margin: '0 10px' }}>Credits: {this.props.auth}</li>,
+                    <li key="2" style={{ margin: '0 10px' }}>Credits: {this.props.auth.credits}</li>,
                     <li key="3"><a href="/api/logout">Logout</a></li>
                 ]
         }
