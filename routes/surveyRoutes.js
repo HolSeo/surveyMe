@@ -19,6 +19,7 @@ module.exports = app => {
         })
 
         const mailer = new Mailer(survey,surveyTemplate(survey));
+        mailer.send()
     })
 
     // We cannot customize the URL to record User's answers because everybody gets the same email template.
