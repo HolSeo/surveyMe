@@ -29,11 +29,10 @@ module.exports = app => {
             req.user.credits -= 1
 
             const user = await req.user.save()
+            res.send(user)
         } catch(err) {
             res.status(422).send(err)
         }
-
-        res.send(user)
     })
 
     // We cannot customize the URL to record User's answers because everybody gets the same email template.
