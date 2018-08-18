@@ -1,3 +1,6 @@
+const _ = require('lodash')
+const Path = require('path-parser').default
+const { URL } = require('url') // default in Node.js
 const mongoose = require('mongoose')
 const requireLogin = require('../middlewares/requireLogin')
 const requireCredits = require('../middlewares/requireCredits')
@@ -12,7 +15,18 @@ module.exports = app => {
     })
     
     app.post('/api/surveys/webhooks', (req,res) => {
-        console.log(req.body)
+        const p = new Path('/api/surveys/:surveyId/:choice') // extracts surveyID and choice
+        const events = _.chain(req.body)
+            .map(({ url, email }) => {
+            const match = p.test(new URL(url).pathname) // new URL extracts route, match is object of matches or null
+            if (match) {
+                return { email, surveyId: match.surveyId, choice: match.choice }
+            }
+        })
+            .compact() // removes undefined elements
+            .uniqBy('email', 'surveyId') // removes duplicates in email or surveyId keys
+            .value() // return value
+        console.log(events)
         res.send({})
     })
 
