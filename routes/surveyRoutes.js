@@ -10,23 +10,34 @@ const surveyTemplate = require('../services/emailTemplates/surveyTemplate')
 const Survey = mongoose.model('surveys') // side-stepping error from testing.
 
 module.exports = app => {
-    app.get('/api/surveys/response', (req,res) => {
+    app.get('/api/surveys/:surveyId/:choice', (req,res) => {
         res.send('Thanks for voting!')
     })
     
     app.post('/api/surveys/webhooks', (req,res) => {
         const p = new Path('/api/surveys/:surveyId/:choice') // extracts surveyID and choice
-        const events = _.chain(req.body)
+        _.chain(req.body)
             .map(({ url, email }) => {
-            const match = p.test(new URL(url).pathname) // new URL extracts route, match is object of matches or null
-            if (match) {
-                return { email, surveyId: match.surveyId, choice: match.choice }
-            }
-        })
+                const match = p.test(new URL(url).pathname) // new URL extracts route, match is object of matches or null
+                if (match) {
+                    return { email, surveyId: match.surveyId, choice: match.choice }
+                }
+            })
             .compact() // removes undefined elements
             .uniqBy('email', 'surveyId') // removes duplicates in email or surveyId keys
+            .each(({ surveyId, email, choice }) => {
+                Survey.updateOne({
+                    _id: surveyId,
+                    recipients: {
+                        $elemMatch: { email: email, responded: false }
+                    }
+                }, {
+                    $inc: { [choice]: 1 },
+                    $set: { 'recipients.$.responded': true }, // set selected recipients responded to true
+                    lastResponded: new Date()
+                }).exec()
+            })
             .value() // return value
-        console.log(events)
         res.send({})
     })
 
