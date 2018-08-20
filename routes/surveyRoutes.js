@@ -11,7 +11,7 @@ const Survey = mongoose.model('surveys') // side-stepping error from testing.
 
 module.exports = app => {
     app.get('/api/surveys', requireLogin, async (req,res) => {
-        const surveys = await Survey.find({ _user: req.user.id })
+        const surveys = await Survey.find({ _user: req.user.id }).select({ recipients: false }); // not include recipients.
         res.send(surveys)
     })
 
