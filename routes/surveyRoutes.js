@@ -18,6 +18,11 @@ module.exports = app => {
     app.get('/api/surveys/:surveyId/:choice', (req,res) => {
         res.send('Thanks for voting!')
     })
+
+    app.delete('/api/surveys/delete/:id', async (req,res) => {
+        const survey = await Survey.find({ _id: req.params.id }).remove()
+        res.send(survey)
+    })
     
     app.post('/api/surveys/webhooks', (req,res) => {
         const p = new Path('/api/surveys/:surveyId/:choice') // extracts surveyID and choice
