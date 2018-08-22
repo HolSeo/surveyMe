@@ -15,3 +15,7 @@ You do NOT have to enter in your actual credit card information! Enter in 4242-4
 - MongoDB with Mongoose 
 - MaterializeCSS
 - HTML/CSS
+
+#### Improvements
+- Able to delete surveys
+- Design Thank You page, color scheme, and front page.
