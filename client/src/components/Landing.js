@@ -4,7 +4,8 @@ class Landing extends Component {
     render() {
         return (
             <div style={{ textAlign: 'center' }}>
-                <h1>THIS IS THE LANDING PAGE!!</h1>
+                <h3>Welcome to SurveyMe!</h3>
+                <img src={require('./picture.jpg')} style={{ borderRadius: 50 }}/>
             </div>
         )
     }

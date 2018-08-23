@@ -9,7 +9,7 @@ class Header extends Component {
             case null:
                 return;
             case false:
-                return <li><a href="/auth/google">Login with Gooogle</a></li>
+                return <li><a href="/auth/google">Login with Google</a></li>
             default:
                 return [
                     <li key="1"><Payments /></li>,
