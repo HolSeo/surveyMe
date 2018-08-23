@@ -17,5 +17,5 @@ You do NOT have to enter in your actual credit card information! Enter in 4242-4
 - HTML/CSS
 
 #### Improvements
-- Able to delete surveys
-- Design Thank You page, color scheme, and front page.
+- Improve design on Thank You page, front page, email template, and Survey Review page.
+- Create a draft mode.
