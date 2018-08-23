@@ -16,7 +16,7 @@ module.exports = app => {
     })
 
     app.get('/api/surveys/:surveyId/:choice', (req,res) => {
-        res.send('Thanks for voting!')
+        res.redirect('/surveys/thanks')
     })
 
     app.delete('/api/surveys/delete/:id', async (req,res) => {
