@@ -11,21 +11,26 @@ class SurveyList extends Component {
             return (
                 <div className="card darken-1" key={survey._id}>
                     <div className="card-content">
-                        <span className="card-title">{survey.title}</span>
-                        <button className="card-title right" onClick={() => this.props.deleteSurvey(survey._id)}>
+                        <span className="card-title"><h4 style={{ marginTop: '0' }}>{survey.title}</h4></span>
+                        <button className="btn right" onClick={() => this.props.deleteSurvey(survey._id)}>
                             <i className="material-icons">clear</i>
                         </button>
-                        <p>{survey.body}</p>
-                        <p className="right">
+                        <h6>{survey.body}</h6>
+                        <br/>
+                        <p className="left">
                             Sent On: {new Date(survey.dateSent).toLocaleDateString()}
                         </p>
                     </div>
                     <div className="card-action">
-                        <a>Five Star: {survey.fiveStar}</a>
-                        <a>Four Star: {survey.fourStar}</a>
-                        <a>Three Star: {survey.threeStar}</a>
-                        <a>Two Star: {survey.twoStar}</a>
-                        <a>One Star: {survey.oneStar}</a>
+                        <a>1 star: {survey.oneStar}</a>
+                        <a>2 stars: {survey.twoStar}</a>
+                        <a>3 stars: {survey.threeStar}</a>
+                        <a>4 stars: {survey.fourStar}</a>
+                        <a>5 stars: {survey.fiveStar}</a>
+                        <a className="right">
+                        Avg: {((survey.oneStar + survey.twoStar*2 + survey.threeStar*3 + survey.fourStar*4 + survey.fiveStar*5) /
+                            (survey.oneStar + survey.twoStar + survey.threeStar + survey.fourStar + survey.fiveStar)).toFixed(2)} stars
+                        </a>
                     </div>
                 </div>
             )

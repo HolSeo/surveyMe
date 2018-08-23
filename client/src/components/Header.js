@@ -20,15 +20,17 @@ class Header extends Component {
     }
     render() {
         return (
-            <nav>
-                <div style={{ margin: '0 10px' }}>
+            <nav className="teal lighten-2">
+                <div style={{ margin: '0 20px' }}>
                     <div className="nav-wrapper">
                         <Link 
                             to={this.props.auth ? '/surveys' : '/'}
                             className="left brand-logo"
                         >
+                        <i className="material-icons">grade</i>
                         SurveyMe
                         </Link>
+                        
                         <ul className="right">
                             {this.renderContent()}
                         </ul>
